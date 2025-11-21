@@ -1,0 +1,442 @@
+/* --- sains3.css (Lengkap) --- */
+
+/* 1. IMPOR FONT POPPINS */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Gaya Umum dan Variabel Animasi */
+:root {
+    --current-color: #4a90e2; 
+    --transition-speed: 1.0s; 
+    --main-font: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--main-font); 
+    margin: 0;
+    padding: 0;
+    background-color: var(--current-color); 
+    transition: background-color var(--transition-speed) ease-in-out; 
+    color: #fff;
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+/* ------------------------------------------------------------------------ */
+/* --- GAYA JUDUL UTAMA (#main-title) --- */
+/* ------------------------------------------------------------------------ */
+#main-title {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50; 
+    
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 10px 20px;
+    margin: 0;
+    
+    /* Efek Smoke/Glassmorphism ringan untuk kontras */
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    pointer-events: none; 
+}
+
+
+/* ------------------------------------------------------------------------ */
+/* --- SIDEBAR NAVIGASI (Smoke Effect, 50px Lebar) --- */
+/* ------------------------------------------------------------------------ */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0; 
+    height: 100%;
+    width: 90px; /* Lebar sidebar ditingkatkan menjadi 50px */
+    padding: 10px 0; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Tombol mulai dari atas */
+    overflow-y: auto; /* Mengaktifkan scroll */
+    gap: 6px; /* Jarak antar tombol */
+    
+    /* Efek Smoke/Glassmorphism */
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    
+    z-index: 100;
+    opacity: 0; 
+    transition: opacity 0.5s ease-in-out;
+}
+
+#sidebar.visible {
+    opacity: 1;
+}
+
+.nav-button {
+    width: 60px; /* Lebar tombol 30px */
+    height: 30px; /* Tinggi tombol 30px */
+    background-color: transparent; 
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 4px; 
+    color: white;
+    font-size: 0.9rem; 
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease, transform 0.1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: white;
+    transform: scale(1.05);
+}
+
+.nav-button.active {
+    background-color: white;
+    color: var(--current-color); 
+    border-color: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); 
+    transform: scale(1.1);
+}
+
+/* Sembunyikan Sidebar pada perangkat yang sangat kecil */
+@media (max-width: 600px) {
+    #sidebar {
+        display: none;
+    }
+}
+
+/* ------------------------------------------------------------------------ */
+/* --- Animasi Shimmer (Efek Kilauan) --- */
+/* ------------------------------------------------------------------------ */
+@keyframes shimmer {
+    0% {
+        background-position: -400px 0;
+    }
+    100% {
+        background-position: 400px 0;
+    }
+}
+
+/* --- Konten Utama (Slides) --- */
+.slide {
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;    
+    text-align: center;     
+    padding: 0 5%; 
+    padding-top: 60px; /* Tambahan padding untuk judul statis */
+    width: 90%; 
+    margin: 0 auto; 
+    position: relative; /* PENTING: Untuk posisi emoji dan ikon latar belakang */
+    overflow: hidden; 
+    
+    opacity: 0; 
+    transform: translateY(30px); 
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.slide.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide h3 {
+    font-size: 3.2rem; 
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    position: relative; 
+    z-index: 2;
+    
+    /* Gaya untuk Efek Shimmer */
+    display: inline-block; 
+    background: linear-gradient(
+        90deg, 
+        rgba(255, 255, 255, 0.1) 0%, 
+        rgba(255, 255, 255, 0.5) 50%, 
+        rgba(255, 255, 255, 0.1) 100%
+    );
+    background-size: 200px 100%; 
+    background-clip: text; 
+    -webkit-background-clip: text; 
+    color: transparent; 
+    animation: shimmer 3s infinite linear; 
+}
+
+.slide p {
+    font-size: 1.3rem; 
+    max-width: 750px;
+    font-weight: 300;
+    position: relative; 
+    z-index: 2;
+    margin: 10px 0;
+}
+
+.random-emoji {
+    position: absolute;
+    font-size: 2.5em; 
+    opacity: 0.3;     /* NILAI OPASITAS DITINGKATKAN (misalnya, dari 0.1 menjadi 0.3) */
+    pointer-events: none; 
+    user-select: none;    
+    z-index: 1;           
+    
+    animation: floatEmoji 8s ease-in-out infinite alternate; 
+}
+/* ... kode lainnya tetap sama ... */
+
+/* Animasi melayang untuk emoji */
+@keyframes floatEmoji {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+.slide:not(.visible) .random-emoji {
+    display: none;
+}
+
+
+/* ------------------------------------------------------------------------ */
+/* --- GAYA FUN FACT CARD (SMOKE/GLASSMORHPISM) --- */
+/* ------------------------------------------------------------------------ */
+
+.fun-fact-card {
+    /* Gaya Card */
+    background: rgba(255, 255, 255, 0.15); 
+    border-radius: 12px;
+    padding: 15px 30px;
+    margin-top: 30px;
+    max-width: 650px; 
+    width: 90%;
+    
+    /* Efek Smoke/Glassmorphism */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); 
+    
+    /* Bayangan halus */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+
+    position: relative;
+    z-index: 2; 
+    
+    font-weight: 400; 
+}
+
+.fun-fact-card p {
+    margin: 0;
+    padding: 0;
+    font-size: 1.15rem; 
+    max-width: none; 
+    font-weight: 400;
+}
+
+
+/* ------------------------------------------------------------------------ */
+/* --- GAYA DAN ANIMASI IKON LATAR BELAKANG FONT AWESOME --- */
+/* ------------------------------------------------------------------------ */
+
+.slide-icon-background {
+    position: absolute;
+    font-family: "Font Awesome 6 Free"; 
+    font-weight: 900; 
+    font-size: 25vw; 
+    color: rgba(255, 255, 255, 0.1); 
+    pointer-events: none; 
+    z-index: 1; 
+    
+    top: 50%;
+    right: 10%; 
+    transform: translate(0, -50%) rotate(0deg); 
+
+    opacity: 0; 
+    transition: opacity 1s ease-out; 
+}
+
+/* PEMETAAN IKON (Unicode dari Font Awesome) */
+.slide[data-icon="fa-atom"] .slide-icon-background::before { content: "\f5fb"; animation: float 6s ease-in-out infinite alternate, rotate 15s linear infinite; }
+.slide[data-icon="fa-flask"] .slide-icon-background::before { content: "\f0c3"; animation: float 7s ease-in-out infinite alternate, rotate 18s linear infinite reverse; }
+.slide[data-icon="fa-cube"] .slide-icon-background::before { content: "\f6d1"; animation: float 6.5s ease-in-out infinite alternate, rotate 12s linear infinite; }
+.slide[data-icon="fa-burn"] .slide-icon-background::before { content: "\f460"; animation: float 8s ease-in-out infinite alternate, rotate 20s linear infinite reverse; }
+.slide[data-icon="fa-weight-hanging"] .slide-icon-background::before { content: "\f5cd"; animation: float 7.5s ease-in-out infinite alternate, rotate 17s linear infinite; }
+.slide[data-icon="fa-cloud"] .slide-icon-background::before { content: "\f0c2"; animation: float 6s ease-in-out infinite alternate, rotate 10s linear infinite reverse; }
+.slide[data-icon="fa-vial"] .slide-icon-background::before { content: "\f494"; animation: float 7s ease-in-out infinite alternate, rotate 14s linear infinite; }
+.slide[data-icon="fa-seedling"] .slide-icon-background::before { content: "\f4d8"; animation: float 6.8s ease-in-out infinite alternate, rotate 16s linear infinite reverse; }
+.slide[data-icon="fa-gem"] .slide-icon-background::before { content: "\f3a5"; animation: float 7.2s ease-in-out infinite alternate, rotate 13s linear infinite; }
+.slide[data-icon="fa-skull-crossbones"] .slide-icon-background::before { content: "\f714"; animation: float 6s ease-in-out infinite alternate, rotate 19s linear infinite reverse; }
+.slide[data-icon="fa-water"] .slide-icon-background::before { content: "\f773"; animation: float 7.7s ease-in-out infinite alternate, rotate 11s linear infinite; }
+.slide[data-icon="fa-medal"] .slide-icon-background::before { content: "\f5a2"; animation: float 6.3s ease-in-out infinite alternate, rotate 18s linear infinite reverse; }
+.slide[data-icon="fa-wind"] .slide-icon-background::before { content: "\f72e"; animation: float 7s ease-in-out infinite alternate, rotate 14s linear infinite; }
+.slide[data-icon="fa-trash-alt"] .slide-icon-background::before { content: "\f2ed"; animation: float 6.6s ease-in-out infinite alternate, rotate 16s linear infinite reverse; }
+.slide[data-icon="fa-gas-pump"] .slide-icon-background::before { content: "\f52f"; animation: float 7.1s ease-in-out infinite alternate, rotate 15s linear infinite; }
+
+
+/* Animasi melayang (naik-turun) */
+@keyframes float {
+    0% { transform: translate(0, -50%) rotate(0deg); }
+    50% { transform: translate(0, -60%) rotate(5deg); } 
+    100% { transform: translate(0, -50%) rotate(0deg); }
+}
+
+/* Animasi berputar */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Ikon latar belakang hanya terlihat saat slide aktif */
+.slide.visible .slide-icon-background {
+    opacity: 1; 
+}
+
+
+/* ------------------------------------------------------------------------ */
+/* --- GAYA MODAL (POP-UP) DAN TOMBOL AKHIR --- */
+/* ------------------------------------------------------------------------ */
+
+#modal-backdrop {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); z-index: 1000;
+    opacity: 0; pointer-events: none; transition: opacity 0.5s ease;
+}
+
+#modal-backdrop.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#welcome-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8); 
+    background: white;
+    color: #333;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    z-index: 1001; 
+    text-align: center;
+    max-width: 80%;
+    
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+}
+
+#welcome-modal.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1); 
+}
+
+#welcome-modal.fade-out {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+}
+#modal-backdrop.fade-out {
+    opacity: 0;
+}
+
+@keyframes bouncing-chem {
+    0%, 100% {
+        transform: translateY(0); /* Posisi awal dan akhir */
+    }
+    50% {
+        transform: translateY(-10px); /* Posisi tertinggi (10px ke atas) */
+    }
+}
+/* ------------------------------------------------ */
+
+.modal-content p {
+    font-size: 4rem;
+    margin-bottom: 25px;
+    animation: bouncing-chem 1.5s ease-in-out infinite;
+}
+
+.modal-content p {
+    font-size: 4rem;
+    margin-bottom: 25px;
+}
+
+#close-modal-btn {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 15px 40px; 
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px; 
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.3s;
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.7); 
+}
+
+#close-modal-btn:hover {
+    background-color: #27ae60;
+    box-shadow: 0 0 25px rgba(46, 204, 113, 0.9); 
+}
+
+#end-button {
+    margin-top: 40px; 
+    padding: 15px 40px; 
+    background-color: #f1c40f; 
+    color: #333;
+    text-decoration: none;
+    font-size: 1.3rem; 
+    font-weight: 700;
+    border-radius: 50px; 
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out, background-color 0.2s, box-shadow 0.3s;
+    
+    opacity: 0;
+    transform: translateY(30px);
+    pointer-events: none; 
+}
+
+#end-button.visible {
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow: 0 0 15px rgba(241, 196, 15, 0.7); 
+    pointer-events: auto; 
+}
+
+#end-button:hover {
+    background-color: #e67e22; 
+    color: white;
+    box-shadow: 0 0 25px rgba(230, 126, 34, 0.9); 
+}
+
+/* Responsivitas dasar */
+@media (max-width: 768px) {
+    .slide h3 {
+        font-size: 2.5rem;
+    }
+    .slide p {
+        font-size: 1.1rem;
+    }
+    .slide-icon-background {
+        font-size: 50vw;
+        right: 0;
+        top: 20%;
+    }
+}

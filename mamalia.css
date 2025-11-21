@@ -1,0 +1,224 @@
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+body { overflow: hidden; background-color: #87CEEB; }
+
+/* Container Scroll Horizontal */
+.world-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: auto; /* Scroll ke samping */
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory; /* Efek magnet saat scroll */
+    scroll-behavior: smooth;
+}
+
+/* Styling Setiap Slide */
+.slide {
+    flex: 0 0 100vw; /* Lebar slide = lebar layar */
+    height: 100vh;
+    position: relative;
+    scroll-snap-align: start; /* Posisi berhenti scroll */
+    overflow: hidden;
+    border-right: 2px solid rgba(0,0,0,0.1); /* Pemisah tipis */
+}
+
+/* Latar Belakang Slide 1 (Rumput Cerah) */
+.slide-1 {
+    background: linear-gradient(to bottom, #87CEEB 50%, #90EE90 50%, #32CD32 100%);
+}
+
+/* Latar Belakang Slide 2 (Lebih Gelap/Sore) */
+.slide-2 {
+    background: linear-gradient(to bottom, #a3dcf5 50%, #8FBC8F 50%, #2E8B57 100%);
+}
+
+/* Elemen Dekorasi (Pohon, Awan, dll) */
+.decoration {
+    position: absolute;
+    font-size: 4rem;
+    pointer-events: none; /* Agar tidak bisa diklik */
+    z-index: 1;
+}
+
+.cloud {
+    font-size: 5rem;
+    opacity: 0.8;
+    animation: float 6s infinite ease-in-out;
+}
+
+.decoration.water {
+    background: rgba(65, 105, 225, 0.6);
+    z-index: 2;
+}
+
+/* Judul per Slide */
+header, .slide-title {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+/* Hewan */
+.animal {
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.animal-emoji {
+    font-size: 5rem;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2));
+}
+
+.animal-shadow {
+    width: 70%;
+    height: 10px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 50%;
+    margin-top: -10px;
+}
+
+.animal:hover {
+    transform: scale(1.2) translateY(-15px);
+}
+
+/* Tombol Kembali & Indikator */
+.btn-back {
+    position: fixed; /* Fixed agar tetap terlihat saat scroll */
+    top: 20px; left: 20px;
+    padding: 10px 20px;
+    background: white; border: none; border-radius: 20px;
+    cursor: pointer; font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+
+.scroll-indicator {
+    position: fixed;
+    bottom: 20px; right: 20px;
+    color: white; background: rgba(0,0,0,0.4);
+    padding: 5px 15px; border-radius: 15px;
+    font-size: 0.9rem;
+    z-index: 90;
+    animation: bounce 2s infinite;
+}
+
+/* MODAL Styles */
+.modal {
+    display: none;
+    position: fixed; z-index: 200;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    backdrop-filter: blur(5px);
+    justify-content: center; align-items: center;
+    opacity: 0; transition: opacity 0.3s;
+}
+.modal.show { display: flex; opacity: 1; }
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%; max-width: 450px;
+    position: relative;
+    text-align: left;
+    transform: translateY(50px);
+    transition: transform 0.3s;
+}
+.modal.show .modal-content { transform: translateY(0); }
+
+/* Gambar di dalam Modal */
+.modal-image-container {
+    width: 100%;
+    height: 200px;
+    background-color: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.modal-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Agar gambar tidak gepeng */
+}
+
+.close-btn {
+    position: absolute; top: 10px; right: 15px;
+    font-size: 30px; cursor: pointer; color: white;
+    text-shadow: 0 0 5px black; z-index: 205;
+}
+
+.fun-fact-box {
+    background: #fffbe6;
+    border-left: 4px solid #FFD700;
+    padding: 10px; margin-top: 10px;
+}
+
+/* Animasi */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateX(0);}
+    40% {transform: translateX(10px);}
+    60% {transform: translateX(5px);}
+}
+
+/* Styling Khusus Dekorasi */
+.decoration {
+    position: absolute;
+    font-size: 4rem; /* Ukuran default dekorasi */
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Penyesuaian Ukuran & Efek Pohon */
+.decoration.tree {
+    font-size: 6rem; /* Membuat pohon lebih besar */
+    /* Menambahkan bayangan di bawah pohon agar terlihat menancap */
+    filter: drop-shadow(0 15px 5px rgba(0, 50, 0, 0.5)); 
+}
+
+/* Latar Belakang Slide 3: Hutan Hujan Tropis */
+.slide-3 {
+    /* Gradasi Langit mendung dan Hutan lebat, warna lebih gelap */
+    background: linear-gradient(to bottom, #778899 40%, #228B22 40%, #006400 100%);
+}
+
+/* Latar Belakang Slide 4: Arktik */
+.slide-4 {
+    /* Warna Langit Arktik (dingin) dan Hamparan Salju */
+    background: linear-gradient(to bottom, #ADD8E6 40%, #FFFFFF 40%, #F0F8FF 100%);
+}
+
+/* Dekorasi Khusus Arktik */
+.decoration.ice {
+    background: rgba(240, 248, 255, 0.8);
+    border-top: 10px solid #FFFFFF;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+/* Penyesuaian Shadow untuk Hewan Arktik (Warna putih atau biru muda) */
+.slide-4 .animal-shadow {
+    background: rgba(173, 216, 230, 0.6); /* Light Blue shadow */
+}
+
+.slide-4 h2 {
+    color: #000;
+    text-shadow: 1px 1px 2px #fff;
+}

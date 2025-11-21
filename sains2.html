@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Anatomi Tubuh Manusia</title>
+    <link rel="stylesheet" href="sains2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <a href="xcv.html" class="btn-back">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Kembali
+    </a>
+
+    <div class="container">
+        <header class="main-header">
+            <h1>INTERACTIVE ANATOMY</h1>
+            <p>Klik bagian organ untuk melihat fungsi biologisnya</p>
+        </header>
+
+        <div class="content-grid">
+            
+            <div class="anatomy-display">
+                <svg viewBox="0 0 400 750" class="human-svg" xmlns="http://www.w3.org/2000/svg">
+                    
+                    <defs>
+                        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="3" result="blur" />
+                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                        </filter>
+                    </defs>
+
+                    <g id="body-outline">
+                        <path d="M200,20 C160,20 140,50 140,80 C140,110 150,130 130,140 C100,155 80,180 75,240 C70,350 70,450 80,500 C90,550 110,650 115,730 L140,730 L140,520 L260,520 L260,730 L285,730 C290,650 310,550 320,500 C330,450 330,350 325,240 C320,180 300,155 270,140 C250,130 260,110 260,80 C260,50 240,20 200,20 Z" 
+                              fill="#111827" stroke="#374151" stroke-width="2"/>
+                    </g>
+
+                    <g id="brain" class="organ-group" data-id="otak">
+                        <path class="organ-shape" d="M200,35 C180,35 165,45 165,65 C165,80 175,90 200,95 C225,90 235,80 235,65 C235,45 220,35 200,35 Z M200,45 C210,45 210,55 200,55 C190,55 190,45 200,45 Z" />
+                        <text x="300" y="60" class="label-line">Otak</text>
+                        <line x1="240" y1="60" x2="290" y2="60" class="pointer-line"/>
+                    </g>
+
+                    <g id="lungs" class="organ-group" data-id="paru">
+                        <path class="organ-shape" d="M215,160 C230,150 260,160 270,200 C280,250 260,280 220,270 Z" />
+                        <path class="organ-shape" d="M185,160 C170,150 140,160 130,200 C120,250 140,280 180,270 Z" />
+                        <text x="70" y="180" class="label-line">Paru-Paru</text>
+                        <line x1="125" y1="175" x2="140" y2="190" class="pointer-line"/>
+                    </g>
+
+                    <g id="heart" class="organ-group" data-id="jantung">
+                        <path class="organ-shape" d="M200,210 C220,200 230,220 220,240 L200,265 L180,240 C170,220 180,200 200,210 Z" />
+                    </g>
+
+                    <g id="liver" class="organ-group" data-id="hati">
+                        <path class="organ-shape" d="M200,280 C180,275 150,290 150,310 L220,330 C250,310 250,280 200,280 Z" />
+                    </g>
+
+                    <g id="stomach" class="organ-group" data-id="lambung">
+                        <path class="organ-shape" d="M220,300 C240,300 260,330 250,360 C240,380 210,370 220,330 Z" />
+                    </g>
+
+                    <g id="kidneys" class="organ-group" data-id="ginjal">
+                        <path class="organ-shape" d="M165,340 C155,340 150,360 160,370 C170,380 175,360 165,340 Z" /> <path class="organ-shape" d="M235,340 C245,340 250,360 240,370 C230,380 225,360 235,340 Z" /> </g>
+
+                    <g id="intestines" class="organ-group" data-id="usus">
+                        <path class="organ-shape" d="M170,380 C150,380 150,460 170,480 C200,490 230,480 230,460 C250,460 250,380 230,380 Q200,400 170,380 Z M180,400 L220,400 L220,450 L180,450 Z" />
+                        <text x="320" y="420" class="label-line">Pencernaan</text>
+                        <line x1="250" y1="420" x2="310" y2="420" class="pointer-line"/>
+                    </g>
+                    
+                    <g id="bladder" class="organ-group" data-id="kandungkemih">
+                         <path class="organ-shape" d="M185,490 C185,490 200,515 215,490 Q200,480 185,490 Z" />
+                    </g>
+
+                </svg>
+            </div>
+
+            <div class="info-panel">
+                <div id="placeholder-state" class="info-state active">
+                    <div class="scan-line"></div>
+                    <div class="icon-large">🧬</div>
+                    <h2>DATA BIOLOGIS</h2>
+                    <p>Menunggu input... Silakan pilih organ pada model anatomi untuk memulai analisis.</p>
+                </div>
+
+                <div id="detail-state" class="info-state">
+                    <div class="header-info">
+                        <div class="organ-icon-box" id="detail-icon">🧠</div>
+                        <div>
+                            <h2 id="detail-title">NAMA ORGAN</h2>
+                            <span class="badge" id="detail-system">Sistem Saraf</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-body">
+                        <h3>Fungsi Utama</h3>
+                        <p id="detail-desc">Deskripsi fungsi akan muncul di sini.</p>
+                        
+                        <div class="stats-box">
+                            <h3>⚡ Fakta Medis</h3>
+                            <p id="detail-fact">Fakta menarik.</p>
+                        </div>
+
+                        <div class="health-tip">
+                            <strong>💡 Tips Kesehatan:</strong>
+                            <span id="detail-tip">Cara menjaga organ ini.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="emoji-background"></div>
+
+    <script src="sains2.js"></script>
+</body>
+</html>

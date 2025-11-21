@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Teleportation Protocol</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="f3.css">
+</head>
+<body>
+
+    <canvas id="matrix-bg"></canvas>
+
+    <div class="grid-overlay"></div>
+
+    <div class="ui-container">
+        
+        <header>
+            <div class="connection-status">STATUS: <span class="blink">ONLINE</span></div>
+        </header>
+
+        <main>
+            <section class="simulation-panel">
+                <div class="panel-header">
+                    <h3>// QUANTUMSIMULATION</h3>
+                </div>
+                
+                <div class="stage-container">
+                    <div class="station" id="station-alice">
+                        <div class="station-label">ALICE (SENDER)</div>
+                        <div class="teleport-pad">
+                            <div class="cube-container" id="object-alice">
+                                <div class="cube">
+                                    <div class="face front"></div>
+                                    <div class="face back"></div>
+                                    <div class="face right"></div>
+                                    <div class="face left"></div>
+                                    <div class="face top"></div>
+                                    <div class="face bottom"></div>
+                                </div>
+                            </div>
+                            <div class="scanner-beam"></div>
+                        </div>
+                    </div>
+
+                    <div class="channel-flow">
+                        <div class="data-stream"></div>
+                        <div class="entanglement-icon">∞</div>
+                    </div>
+
+                    <div class="station" id="station-bob">
+                        <div class="station-label">BOB (RECEIVER)</div>
+                        <div class="teleport-pad">
+                            <div class="cube-container hidden" id="object-bob">
+                                <div class="cube">
+                                    <div class="face front"></div>
+                                    <div class="face back"></div>
+                                    <div class="face right"></div>
+                                    <div class="face left"></div>
+                                    <div class="face top"></div>
+                                    <div class="face bottom"></div>
+                                </div>
+                            </div>
+                            <div class="reconstructor-beam"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button id="btn-teleport" onclick="startTeleportation()">INITIATE TELEPORT</button>
+                    <button id="btn-reset" onclick="resetSimulation()" disabled>RESET SYSTEM</button>
+                </div>
+
+                <div class="console-log" id="console-output">
+                    <p>> SYSTEM READY...</p>
+                    <p>> WAITING FOR INPUT...</p>
+                </div>
+            </section>
+
+            <aside class="info-panel">
+                <div class="info-card">
+                    <h2>Apa itu Teleportasi Kuantum?</h2>
+                    <p>Bukan memindahkan materi fisik, melainkan mentransfer <strong>informasi keadaan kuantum</strong> (Quantum State) dari satu partikel ke partikel lain yang terpisah jarak.</p>
+                </div>
+
+                <div class="step-list">
+                    <div class="step-item" id="step-1">
+                        <span class="step-num">01</span>
+                        <div class="step-content">
+                            <h4>Entanglement</h4>
+                            <p>Sumber menciptakan sepasang qubit yang saling terikat (entangled) dan membaginya ke Alice dan Bob.</p>
+                        </div>
+                    </div>
+                    <div class="step-item" id="step-2">
+                        <span class="step-num">02</span>
+                        <div class="step-content">
+                            <h4>Bell Measurement</h4>
+                            <p>Alice melakukan pengukuran pada qubit miliknya. Ini "menghancurkan" keadaan asli qubit.</p>
+                        </div>
+                    </div>
+                    <div class="step-item" id="step-3">
+                        <span class="step-num">03</span>
+                        <div class="step-content">
+                            <h4>Classical Channel</h4>
+                            <p>Alice mengirim hasil pengukuran (2 bit klasik) ke Bob melalui telepon/internet.</p>
+                        </div>
+                    </div>
+                    <div class="step-item" id="step-4">
+                        <span class="step-num">04</span>
+                        <div class="step-content">
+                            <h4>Reconstruction</h4>
+                            <p>Bob menggunakan data klasik tersebut untuk memutar qubit miliknya agar cocok dengan keadaan asli Alice.</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+<a href="sains4.html" class="back-button">
+                    ← Kembali ke Materi
+                </a>
+
+    <script src="f3.js"></script>
+</body>
+</html>

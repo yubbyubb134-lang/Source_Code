@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekspedisi Laut Dalam</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="air.css">
+</head>
+<body> 
+
+    <div class="bubbles">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div id="depth-ruler">
+        <div class="ruler-line"></div>
+        <div class="ruler-marker" id="current-depth">0m</div>
+    </div>
+
+    <header id="main-header">
+        <nav class="top-nav">
+            <a href="#" class="nav-logo">🌊 Oceanopedia</a>
+            <a href="xcv.html" class="btn-back">Back &rarr;</a>
+        </nav>
+        <div class="header-content">
+            <h1>Jelajahi Kedalaman Samudra</h1>
+            <p>Scroll ke bawah untuk menyelam dari permukaan hingga palung terdalam.</p>
+        </div>
+    </header>
+
+    <main id="content-wrapper">
+        <div id="animal-container">
+        </div>
+    </main>
+
+    <div id="modal-backdrop" class="hidden">
+        <div id="animal-modal">
+            <button id="close-btn">&times;</button>
+            <div class="modal-header">
+                <span id="modal-emoji"></span>
+                <div class="modal-title-group">
+                    <h2 id="modal-name"></h2>
+                    <span id="modal-badge"></span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image-wrapper">
+                    <img id="modal-img" src="" alt="Detail Hewan">
+                </div>
+                <div class="modal-text">
+                    <p class="depth-info"><strong>Kedalaman:</strong> <span id="modal-depth"></span> meter</p>
+                    <p id="modal-description"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="air.js"></script>
+</body>
+</html>

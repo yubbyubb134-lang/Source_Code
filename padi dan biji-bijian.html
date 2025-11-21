@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Grains | Fakta Padi & Biji-bijian</title>
+    <link rel="stylesheet" href="padi dan biji-bijian.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <header class="hero">
+        
+        <a href="xcv.html" class="btn-back">← Kembali</a>
+
+        <div class="overlay"></div>
+        <div class="hero-content fade-in-up">
+            <h1>The Golden Grains</h1>
+            <p>Mengungkap rahasia kecil yang menghidupi miliaran manusia.</p>
+            <a href="#explore" id="btn-explore" class="btn-main">Jelajahi Panen</a> 
+        </div>
+        <div class="scroll-indicator">
+            <span>↓</span>
+        </div>
+    </header>
+
+    <main>
+        <section id="explore" class="container section">
+            <div class="section-header scroll-reveal">
+                <h2>Fakta Unik Padi</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="grid">
+                <div class="card scroll-reveal">
+                    <div class="card-icon">🌾</div>
+                    <h3>Tembok Besar China</h3>
+                    <p>Tahukah kamu? Mortar (adukan semen) yang digunakan untuk merekatkan batu bata Tembok Besar China mengandung <strong>ketan (sticky rice)</strong>. Inilah yang membuatnya sangat kokoh hingga ribuan tahun.</p>
+                </div>
+
+                <div class="card scroll-reveal" style="transition-delay: 0.1s;">
+                    <div class="card-icon">💧</div>
+                    <h3>Si Haus Air</h3>
+                    <p>Untuk menghasilkan 1 kilogram beras, dibutuhkan sekitar <strong>2.500 liter air</strong>. Padi adalah salah satu tanaman yang paling boros air di dunia pertanian.</p>
+                </div>
+
+                <div class="card scroll-reveal" style="transition-delay: 0.2s;">
+                    <div class="card-icon">🌏</div>
+                    <h3>Antartika</h3>
+                    <p>Padi dan jagung ditanam di setiap benua di Bumi, <strong>kecuali Antartika</strong>. Padi merupakan makanan pokok bagi lebih dari separuh populasi dunia.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section dark-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <h2 style="color: #f4e4bc;">Ensiklopedia Biji-bijian</h2>
+                    <p style="color: #aaa;">Klik tombol di bawah untuk melihat keajaiban biji lainnya.</p>
+                </div>
+
+                <div class="grain-viewer scroll-reveal">
+                    <div class="grain-display">
+                        <div id="grain-image" class="grain-circle">🌾</div>
+                        <div class="grain-info">
+                            <h3 id="grain-title">Gandum (Wheat)</h3>
+                            <p id="grain-desc">Tanaman yang paling luas area tanamnya di seluruh dunia. Gandum adalah bahan dasar roti, pasta, dan kue.</p>
+                            <div class="grain-stat">
+                                <span>Asal: Timur Tengah</span>
+                                <span>Energi: Tinggi</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grain-controls">
+                        <button class="btn-grain active" onclick="changeGrain('gandum', this)">Gandum</button>
+                        <button class="btn-grain" onclick="changeGrain('jagung', this)">Jagung</button>
+                        <button class="btn-grain" onclick="changeGrain('quinoa', this)">Quinoa</button>
+                        <button class="btn-grain" onclick="changeGrain('barley', this)">Jelai (Barley)</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container section">
+            <div class="myth-box scroll-reveal">
+                <div class="myth-content">
+                    <h3>Mitos atau Fakta?</h3>
+                    <p id="myth-text">"Beras merah lebih sehat daripada beras putih?"</p>
+                    <div class="myth-buttons">
+                        <button onclick="revealAnswer(true)" class="btn-myth">Fakta</button>
+                        <button onclick="revealAnswer(false)" class="btn-myth">Mitos</button>
+                    </div>
+                    <div id="myth-result" class="hidden">
+                        <h4 id="result-title"></h4>
+                        <p id="result-desc"></p>
+                        <button onclick="nextMyth()" class="btn-small">Pertanyaan Selanjutnya →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Golden Grains Edu. Menanam Pengetahuan.</p>
+    </footer>
+
+    <script src="padi dan biji-bijian.js"></script>
+</body>
+</html>

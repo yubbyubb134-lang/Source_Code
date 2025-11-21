@@ -1,0 +1,396 @@
+/* --- RESET & BASE --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0f0c29; /* Fallback color */
+    color: #ffffff;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* --- BACKGROUND ANIMATED GRADIENT --- */
+.gradient-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(300deg, #0f0c29, #302b63, #24243e);
+    background-size: 180% 180%;
+    animation: gradientAnimation 15s ease infinite;
+    z-index: -2;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- FLOATING EMOJI (Diperhalus) --- */
+.emoji-background {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.emoji {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0; /* Mulai transparan */
+    filter: blur(2px);
+    animation: floatUp 10s linear forwards;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    20% { opacity: 0.3; }
+    80% { opacity: 0.3; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+/* --- HEADER --- */
+header {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(0, 198, 255, 0.3);
+    position: relative;
+    bottom: 0px;
+    left: -30px;
+}
+
+header p {
+    color: #b3b3b3;
+    font-weight: 300;
+}
+
+/* --- CARD GRID --- */
+.card-grid {
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+/* --- GLASSMORPHISM CARD DESIGN --- */
+.card {
+    background: rgba(255, 255, 255, 0.05); /* Sangat transparan */
+    backdrop-filter: blur(16px); /* Efek blur kaca */
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 198, 255, 0.2); /* Glow biru */
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Header dalam kartu */
+.card-header {
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon-box {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 114, 255, 0.4);
+}
+
+.special-card .icon-box {
+    background: linear-gradient(135deg, #f12711, #f5af19);
+    box-shadow: 0 4px 15px rgba(241, 39, 17, 0.4);
+}
+
+.header-text {
+    flex: 1;
+}
+
+.header-text h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.header-text .summary {
+    font-size: 0.85rem;
+    color: #aaa;
+    margin: 0;
+}
+
+.toggle-icon {
+    color: #fff;
+    transition: transform 0.4s ease;
+}
+
+/* Animasi saat kartu dibuka */
+.card.open .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.card.open {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Konten Detail */
+.detail-content {
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background: rgba(0, 0, 0, 0.2); /* Sedikit lebih gelap */
+}
+
+.card.open .detail-content {
+    max-height: 800px; /* Cukup besar untuk diagram */
+    opacity: 1;
+}
+
+.inner-content {
+    padding: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.inner-content h3 {
+    color: #00c6ff;
+    font-size: 1rem;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.inner-content p {
+    font-size: 0.9rem;
+    color: #ddd;
+    margin-bottom: 10px;
+}
+
+/* DIAGRAM PLACEHOLDER STYLING */
+.diagram-box {
+    background: rgba(255,255,255,0.05);
+    border: 2px dashed rgba(255,255,255,0.2);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px 0;
+    text-align: center;
+    color: #aaa;
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.diagram-box span {
+    font-weight: bold;
+    color: #00c6ff;
+}
+
+/* --- BUTTON AREA --- */
+.button-area {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#open-modal-btn {
+    background: linear-gradient(45deg, #ff0099, #493240);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 5px 20px rgba(255, 0, 153, 0.4);
+}
+
+#open-modal-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 0, 153, 0.6);
+}
+
+/* --- MODAL --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.modal.show {
+    opacity: 1;
+}
+
+.modal-content {
+    background: #1a1a2e;
+    border: 1px solid #444;
+    padding: 40px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    text-align: center;
+    transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+}
+
+.modal h2 {
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.fact-cards-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.fact-card {
+    background: #16213e;
+    padding: 20px;
+    border-radius: 15px;
+    width: 140px;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+    border: 1px solid #333;
+}
+
+.fact-card:hover {
+    background: #0f3460;
+    transform: translateY(-5px);
+    border-color: #00c6ff;
+}
+
+.fact-card i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #00c6ff;
+}
+
+.fact-card h3 {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.fact-card p {
+    font-size: 0.7rem;
+    color: #aaa;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.close-btn:hover { color: white; }
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* --- TOMBOL KEMBALI KE BERANDA --- */
+.back-home-btn {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    z-index: 1000; /* Pastikan di atas elemen lain */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    /* Gaya Glassmorphism */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    padding: 10px 25px;
+    border-radius: 50px;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.back-home-btn i {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.back-home-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #00c6ff; /* Warna biru neon */
+    box-shadow: 0 0 20px rgba(0, 198, 255, 0.4); /* Efek glow */
+    transform: translateY(2px);
+}
+
+.back-home-btn:hover i {
+    transform: translateX(-5px); /* Panah bergerak sedikit ke kiri */
+}
+
+/* Responsif untuk HP: Ukuran sedikit mengecil */
+@media (max-width: 600px) {
+    .back-home-btn {
+        top: 15px;
+        left: 15px;
+        padding: 8px 20px;
+        font-size: 0.8rem;
+    }
+}

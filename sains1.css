@@ -1,0 +1,331 @@
+/* --- BASE STYLE & FONT --- */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #050505; /* Hitam pekat sedikit abu agar tidak terlalu tajam */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+    position: relative; 
+    font-family: 'Roboto', sans-serif; /* Font default teks */
+}
+
+/* --- BACKGROUND BINTANG (Tetap dipertahankan karena sudah bagus) --- */
+body::before {
+    content: '';
+    position: fixed; 
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 100px 150px, #fff, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 400px 400px;
+    opacity: 0;
+    animation: starFadeIn 2s ease-out 0.5s forwards, twinkle 4s infinite alternate;
+    z-index: 0;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+@keyframes starFadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 0.8; } 
+}
+
+/* --- SISTEM TATA SURYA --- */
+.solar-system {
+    position: relative;
+    width: 800px; 
+    height: 800px;
+    z-index: 10; 
+    opacity: 0; 
+    animation: solarSystemEntry 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s forwards; 
+}
+
+@keyframes solarSystemEntry {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Fitur Keren: Pause orbit saat mouse di atas area tata surya agar mudah diklik */
+.solar-system:hover .planet, 
+.solar-system:hover .mercury, 
+.solar-system:hover .venus,
+.solar-system:hover .earth,
+.solar-system:hover .mars,
+.solar-system:hover .jupiter,
+.solar-system:hover .saturn,
+.solar-system:hover .uranus,
+.solar-system:hover .neptune {
+    animation-play-state: paused;
+}
+
+/* --- MATAHARI (GLOWING) --- */
+.sun {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90px;
+    height: 90px;
+    /* Gradasi agar terlihat bulat dan panas */
+    background: radial-gradient(circle at center, #fff3cd, #ffcc00, #ff6600);
+    border-radius: 50%;
+    box-shadow: 0 0 60px #ff9900, 0 0 120px rgba(255, 100, 0, 0.4); 
+    animation: sunPulse 4s infinite alternate;
+    z-index: 5;
+}
+
+@keyframes sunPulse {
+    0% { box-shadow: 0 0 50px #ff9900; transform: translate(-50%, -50%) scale(1); }
+    100% { box-shadow: 0 0 80px #ffcc00; transform: translate(-50%, -50%) scale(1.05); }
+}
+
+/* --- GARIS ORBIT (VISUAL) --- */
+.orbit-lines {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; /* Agar klik tembus ke bawah */
+}
+
+.line {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+}
+
+/* Ukuran garis orbit disesuaikan dengan translate planet dikali 2 */
+.mercury-orbit { width: 160px; height: 160px; }
+.venus-orbit { width: 240px; height: 240px; }
+.earth-orbit { width: 320px; height: 320px; }
+.mars-orbit { width: 400px; height: 400px; }
+.jupiter-orbit { width: 480px; height: 480px; }
+.saturn-orbit { width: 560px; height: 560px; }
+.uranus-orbit { width: 640px; height: 640px; }
+.neptune-orbit { width: 720px; height: 720px; }
+
+/* --- PLANET UMUM --- */
+.planet {
+    position: absolute;
+    top: 50%; left: 50%;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    z-index: 10;
+    /* Shadow untuk efek 3D */
+    box-shadow: inset -3px -3px 5px rgba(0,0,0,0.7);
+    transition: filter 0.3s ease;
+}
+
+.planet:hover {
+    filter: brightness(1.3); /* Planet jadi lebih terang saat di-hover */
+    z-index: 100;
+}
+
+/* Label Planet */
+.label {
+    position: absolute;
+    top: -25px; left: 50%;
+    transform: translateX(-50%);
+    color: #7df9ff; /* Warna teks cyan neon */
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    text-shadow: 0 0 5px #000;
+    padding: 2px 6px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, top 0.3s;
+    white-space: nowrap;
+}
+
+.planet:hover .label {
+    opacity: 1;
+    top: -35px; /* Naik sedikit saat muncul */
+}
+
+/* --- SPESIFIKASI PLANET (UKURAN & GRADASI 3D) --- */
+/* Logika animasi: rotate(orbit) -> translateX(jarak) -> rotate(counter-orbit) */
+
+.mercury {
+    width: 12px; height: 12px;
+    background: radial-gradient(circle at 30% 30%, #d3d3d3, #696969);
+    animation: orbit-1 10s linear infinite;
+}
+
+.venus {
+    width: 18px; height: 18px;
+    background: radial-gradient(circle at 30% 30%, #ffe4b5, #cd853f);
+    animation: orbit-2 15s linear infinite;
+}
+
+.earth {
+    width: 20px; height: 20px;
+    background: radial-gradient(circle at 30% 30%, #4da6ff, #004d99);
+    box-shadow: inset -4px -4px 6px rgba(0,0,0,0.8), 0 0 5px #4da6ff; /* Atmosfer bumi */
+    animation: orbit-3 20s linear infinite;
+}
+
+.mars {
+    width: 14px; height: 14px;
+    background: radial-gradient(circle at 30% 30%, #ff6347, #8b0000);
+    animation: orbit-4 25s linear infinite;
+}
+
+.jupiter {
+    width: 45px; height: 45px;
+    /* Efek garis-garis Jupiter */
+    background: linear-gradient(20deg, #d2b48c 10%, #deb887 20%, #8b4513 30%, #deb887 50%, #d2b48c 80%);
+    border-radius: 50%;
+    box-shadow: inset -6px -6px 10px rgba(0,0,0,0.6);
+    animation: orbit-5 35s linear infinite;
+}
+
+.saturn {
+    width: 35px; height: 35px;
+    background: radial-gradient(circle at 30% 30%, #f4e4bc, #cdb176);
+    animation: orbit-6 50s linear infinite;
+    display: flex; justify-content: center; align-items: center;
+    transform-style: preserve-3d; /* Penting untuk cincin */
+}
+
+/* CINCIN SATURNUS */
+.saturn .ring {
+    position: absolute;
+    width: 60px; height: 12px;
+    border: 6px solid rgba(210, 180, 140, 0.8);
+    border-radius: 50%;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 2px rgba(100, 80, 50, 0.3);
+}
+
+.uranus {
+    width: 26px; height: 26px;
+    background: radial-gradient(circle at 30% 30%, #e0ffff, #5f9ea0);
+    animation: orbit-7 70s linear infinite;
+}
+
+.neptune {
+    width: 24px; height: 24px;
+    background: radial-gradient(circle at 30% 30%, #4169e1, #000080);
+    animation: orbit-8 90s linear infinite;
+}
+
+/* --- KEYFRAMES ORBIT (Jarak disesuaikan dengan orbit-lines) --- */
+@keyframes orbit-1 { from { transform: rotate(0deg) translateX(80px) rotate(0deg); } to { transform: rotate(360deg) translateX(80px) rotate(-360deg); } }
+@keyframes orbit-2 { from { transform: rotate(0deg) translateX(120px) rotate(0deg); } to { transform: rotate(360deg) translateX(120px) rotate(-360deg); } }
+@keyframes orbit-3 { from { transform: rotate(0deg) translateX(160px) rotate(0deg); } to { transform: rotate(360deg) translateX(160px) rotate(-360deg); } }
+@keyframes orbit-4 { from { transform: rotate(0deg) translateX(200px) rotate(0deg); } to { transform: rotate(360deg) translateX(200px) rotate(-360deg); } }
+@keyframes orbit-5 { from { transform: rotate(0deg) translateX(240px) rotate(0deg); } to { transform: rotate(360deg) translateX(240px) rotate(-360deg); } }
+@keyframes orbit-6 { from { transform: rotate(0deg) translateX(280px) rotate(0deg); } to { transform: rotate(360deg) translateX(280px) rotate(-360deg); } }
+@keyframes orbit-7 { from { transform: rotate(0deg) translateX(320px) rotate(0deg); } to { transform: rotate(360deg) translateX(320px) rotate(-360deg); } }
+@keyframes orbit-8 { from { transform: rotate(0deg) translateX(360px) rotate(0deg); } to { transform: rotate(360deg) translateX(360px) rotate(-360deg); } }
+
+/* --- MODAL GLASSMORPHISM (KACA) --- */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 200; 
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    backdrop-filter: blur(3px); /* Efek blur latar belakang */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    /* Efek Kaca Modern */
+    background: rgba(25, 25, 50, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    position: relative;
+    text-align: center;
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.close-btn {
+    color: #aaa;
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.close-btn:hover { color: #ff4b4b; }
+
+#modalTitle {
+    color: #ffcc00;
+    margin-top: 0;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+}
+
+#modalDescription {
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+.modal-planet-image {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    margin: 20px auto;
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.learn-more-btn {
+    background: linear-gradient(45deg, #4b69ff, #3a57e0);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    text-decoration: none; 
+    display: inline-block; 
+    margin-top: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.learn-more-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(75, 105, 255, 0.4);
+}
+
+/* --- TOMBOL KEMBALI --- */
+.back-to-home {
+    position: absolute;
+    top: 25px; left: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    transition: all 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.back-to-home:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}

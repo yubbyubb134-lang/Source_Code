@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Into The Void: Black Hole Exploration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="f2.css">
+</head>
+<body>
+
+    <canvas id="void-canvas"></canvas>
+    <div class="vignette"></div>
+
+    <div id="cursor"></div>
+    <div id="cursor-blur"></div>
+
+    <nav>
+        <div class="logo">EVENT<span class="highlight">HORIZON</span></div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="black-hole-container">
+                <div class="accretion-disk"></div>
+                <div class="event-horizon"></div>
+            </div>
+            
+            <div class="hero-text">
+                <h1 class="scramble-text">SINGULARITAS</h1>
+                <p>Di mana waktu berhenti dan cahaya pun tidak bisa lari.</p>
+                <div class="scroll-down">
+                    <span></span>
+                    Scroll untuk Jatuh
+                </div>
+            </div>
+        </section>
+
+        <section class="anatomy">
+            <h2 class="section-header">ANATOMI <span class="highlight">KEGELAPAN</span></h2>
+            
+            <div class="card-grid">
+                <div class="void-card" data-tilt>
+                    <div class="card-number">01</div>
+                    <h3>Event Horizon</h3>
+                    <p>Titik tanpa jalan kembali. Batas di mana kecepatan lepas melebihi kecepatan cahaya.</p>
+                    <div class="glow-bar"></div>
+                </div>
+
+                <div class="void-card" data-tilt>
+                    <div class="card-number">02</div>
+                    <h3>Accretion Disk</h3>
+                    <p>Piringan gas super panas dan debu yang berputar dengan kecepatan mendekati cahaya, bersinar terang karena gesekan.</p>
+                    <div class="glow-bar color-orange"></div>
+                </div>
+
+                <div class="void-card" data-tilt>
+                    <div class="card-number">03</div>
+                    <h3>Singularity</h3>
+                    <p>Pusat lubang hitam. Kepadatan tak terhingga dalam volume nol. Fisika yang kita kenal hancur di sini.</p>
+                    <div class="glow-bar color-white"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="spaghetti-section">
+            <div class="spaghetti-container">
+                <h2>Efek <span class="stretch-effect">SPAGHETTIFICATION</span></h2>
+                <p>Dekatkan mouse Anda ke teks di bawah ini untuk merasakan gaya pasang surut gravitasi yang merobek objek.</p>
+                
+                <div class="interactive-text" id="stretchTarget">
+                    JANGAN MENDEKAT
+                </div>
+            </div>
+        </section>
+    </main>
+    <a href="sains4.html" class="back-button">
+                    ← Kembali ke Materi
+                </a>
+
+    <script src="f2.js"></script>
+</body>
+</html>

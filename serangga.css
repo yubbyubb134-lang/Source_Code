@@ -1,0 +1,165 @@
+/* Reset & Font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #a5d6a7; /* Warna awal */
+    color: #1b5e20;
+    transition: background-color 1.2s ease, color 0.5s ease;
+    overflow-x: hidden;
+}
+
+.back-btn {
+    padding: 10px 20px;
+    border: 2px solid currentColor;
+    background: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    color: inherit;
+}
+
+.back-btn:hover {
+    background: currentColor;
+    color: #000;
+}
+
+.top-btn {
+    position: absolute;
+    left: 50px;
+    top: 15px;
+    padding: 8px 15px;
+}
+
+.back-footer {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 20vh;
+}
+
+/* --- Layout Section --- */
+.scroll-section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+    gap: 60px;
+}
+
+.content-wrapper.reverse {
+    flex-direction: row-reverse;
+}
+
+/* Teks Styling */
+.text-content {
+    flex: 1;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+}
+
+.text-content h1, .text-content h2 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    line-height: 1.1;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-left: 3px solid currentColor;
+    padding-left: 15px;
+}
+
+.text-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* Gambar Styling */
+.image-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.image-content img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    
+    /* Initial State Animasi */
+    opacity: 0;
+    transform: scale(0.9) rotate(5deg); /* Sedikit miring */
+    transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* --- CLASS ACTIVE (Dipicu JS) --- */
+.scroll-section.active .text-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-section.active .image-content img {
+    opacity: 1;
+    transform: scale(1) rotate(0deg); /* Tegak lurus */
+    /* Animasi pergerakan kecil untuk kesan hidup */
+    animation: wiggle 5s ease-in-out infinite; 
+}
+
+/* Animasi Bergerak Sedikit (Wiggle) */
+@keyframes wiggle {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Responsive HP */
+@media (max-width: 768px) {
+    .content-wrapper, .content-wrapper.reverse {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .text-content h1, .text-content h2 {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        border-left: none;
+        border-bottom: 2px solid currentColor;
+        display: inline-block;
+        padding-bottom: 5px;
+    }
+    
+    .image-content img {
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: #d1c4e9;
+}

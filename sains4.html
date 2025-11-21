@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Physics Cards</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="sains4.css">
+</head>
+<body>
+
+    <div class="gradient-bg"></div>
+    <div class="emoji-background"></div>
+
+    <header>
+        <div class="header-content">
+            <h1><i class="fas fa-atom fa-spin-pulse"></i> Fisika Interaktif</h1>
+            <p>Jelajahi rahasia alam semesta dalam ringkasan padat.</p>
+        </div>
+    </header>
+
+    <div class="card-grid">
+
+        <div class="card" onclick="toggleDetail(this)">
+            <div class="card-header">
+                <div class="icon-box"><i class="fas fa-cogs"></i></div>
+                <div class="header-text">
+                    <h2>Mekanika Klasik</h2>
+                    <p class="summary">Gerak, Gaya, dan Hukum Newton.</p>
+                </div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="detail-content">
+                <div class="inner-content">
+                    <h3>Kinematika</h3>
+                    <p>Deskripsi gerak tanpa melihat penyebabnya. Meliputi kecepatan (v) dan percepatan (a).</p>
+                    <h3>Dinamika</h3>
+                    <p>Hubungan gaya dan gerak. Intinya adalah <strong>Hukum Newton</strong>:
+                    <br>1. Inersia (Kelembaman)
+                    <br>2. F = m.a
+                    <br>3. Aksi = -Reaksi</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" onclick="toggleDetail(this)">
+            <div class="card-header">
+                <div class="icon-box"><i class="fas fa-temperature-high"></i></div>
+                <div class="header-text">
+                    <h2>Termodinamika</h2>
+                    <p class="summary">Panas, Energi, dan Entropi.</p>
+                </div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="detail-content">
+                <div class="inner-content">
+                    <h3>Hukum Kekekalan Energi</h3>
+                    <p>Energi tidak dapat diciptakan/dimusnahkan, hanya berubah bentuk.</p>
+                    
+                    <div class="diagram-box">
+                        
+
+[Image of a heat engine cycle illustrating the flow of heat and work]
+
+                        <span>Siklus Mesin Kalor</span>
+                    </div>
+
+                    <h3>Entropi</h3>
+                    <p>Panas mengalir spontan dari panas ke dingin. Ketidakteraturan alam semesta selalu meningkat.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" onclick="toggleDetail(this)">
+            <div class="card-header">
+                <div class="icon-box"><i class="fas fa-water"></i></div>
+                <div class="header-text">
+                    <h2>Fluida</h2>
+                    <p class="summary">Zat alir (Cair & Gas).</p>
+                </div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="detail-content">
+                <div class="inner-content">
+                    <h3>Hukum Archimedes</h3>
+                    <p>Benda di air mendapat gaya angkat ke atas seberat air yang dipindahkan.</p>
+                    <h3>Hukum Bernoulli</h3>
+                    <p>Pada aliran fluida: Kecepatan tinggi = Tekanan rendah. Inilah alasan pesawat bisa terbang.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" onclick="toggleDetail(this)">
+            <div class="card-header">
+                <div class="icon-box"><i class="fas fa-bolt"></i></div>
+                <div class="header-text">
+                    <h2>Listrik & Magnet</h2>
+                    <p class="summary">Muatan, Arus, dan Medan.</p>
+                </div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="detail-content">
+                <div class="inner-content">
+                    <h3>Hukum Coulomb</h3>
+                    <p>Muatan sejenis tolak-menolak, beda jenis tarik-menarik.</p>
+                    
+                    <div class="diagram-box">
+                        
+
+[Image of electric field lines around a positive and negative point charge]
+
+                        <span>Garis Medan Listrik</span>
+                    </div>
+
+                    <h3>Induksi Faraday</h3>
+                    <p>Perubahan medan magnet dapat menghasilkan listrik (Prinsip Generator).</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" onclick="toggleDetail(this)">
+            <div class="card-header">
+                <div class="icon-box"><i class="fas fa-eye"></i></div>
+                <div class="header-text">
+                    <h2>Gelombang & Optik</h2>
+                    <p class="summary">Cahaya, Bunyi, dan Lensa.</p>
+                </div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="detail-content">
+                <div class="inner-content">
+                    <h3>Sifat Gelombang</h3>
+                    <p>Dapat memantul (refleksi), membias (refraksi), dan melentur (difraksi).</p>
+                    
+                    <div class="diagram-box">
+                        
+
+[Image of ray tracing for a converging lens]
+
+                        <span>Pembiasan Lensa Cembung</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card special-card" onclick="toggleDetail(this)">
+            <div class="card-header">
+                <div class="icon-box"><i class="fas fa-rocket"></i></div>
+                <div class="header-text">
+                    <h2>Fisika Modern</h2>
+                    <p class="summary">Relativitas & Kuantum.</p>
+                </div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="detail-content">
+                <div class="inner-content">
+                    <h3>Relativitas Einstein</h3>
+                    <p>E = mc². Waktu bersifat relatif dan melambat saat kita bergerak mendekati kecepatan cahaya.</p>
+                    <h3>Kuantum</h3>
+                    <p>Cahaya bisa bersifat sebagai partikel dan gelombang sekaligus (Dualisme).</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="button-area">
+        <button id="open-modal-btn">Fakta Unik Lainnya ✨</button>
+    </div>
+
+    <div id="funFactsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Jelajahi Lebih Jauh</h2>
+            <div class="fact-cards-container">
+                <a href="f1.html" class="fact-card">
+                    <i class="fas fa-cat"></i>
+                    <h3>Kucing Schrödinger</h3>
+                    <p>Eksperimen pikiran kuantum.</p>
+                </a>
+                <a href="f2.html" class="fact-card">
+                    <i class="fas fa-circle-notch"></i>
+                    <h3>Black Hole</h3>
+                    <p>Gravitasi tanpa batas.</p>
+                </a>
+                <a href="f3.html" class="fact-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Quantum Teleportation</h3>
+                    <p>Keanehan dunia kuantum.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <a href="xcv.html" class="back-home-btn">
+    <i class="fas fa-arrow-left"></i> Beranda
+</a>
+
+    <footer>
+        <p>&copy; 2025 Laboratorium Fisika Digital</p>
+    </footer>
+
+    <script src="sains4.js"></script>
+</body>
+</html>

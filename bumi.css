@@ -1,0 +1,209 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    color: #e0e0e0;
+    background-color: #000000;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    padding-top: 50px; 
+    overflow-x: hidden; 
+    position: relative;
+}
+
+/* Efek Bintang di Latar Belakang */
+.background-stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        /* Bintang kecil */
+        radial-gradient(1px 1px at 10% 20%, #fff, rgba(255, 255, 255, 0)),
+        radial-gradient(1px 1px at 30% 70%, #fff, rgba(255, 255, 255, 0)),
+        radial-gradient(1px 1px at 60% 10%, #fff, rgba(255, 255, 255, 0)),
+        radial-gradient(1px 1px at 80% 50%, #fff, rgba(255, 255, 255, 0)),
+        /* Bintang sedang */
+        radial-gradient(2px 2px at 5% 50%, #fff, rgba(255, 255, 255, 0)),
+        radial-gradient(2px 2px at 40% 20%, #fff, rgba(255, 255, 255, 0)),
+        radial-gradient(2px 2px at 70% 80%, #fff, rgba(255, 255, 255, 0)),
+        /* Bintang besar */
+        radial-gradient(3px 3px at 25% 90%, #fff, rgba(255, 255, 255, 0)),
+        radial-gradient(3px 3px at 90% 30%, #fff, rgba(255, 255, 255, 0));
+    background-repeat: repeat;
+    background-size: 500px 500px, 700px 700px, 900px 900px;
+    opacity: 0.7;
+    animation: twinkle 60s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes twinkle {
+    0% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.02); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 0.7; }
+}
+
+/* Animasi saat Card Masuk */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    background-color: rgba(13, 13, 26, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    /* Shadow biru Bumi */
+    box-shadow: 0 0 30px rgba(59, 123, 158, 0.5); 
+    max-width: 800px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 50px; 
+    
+    animation: slideIn 0.8s ease-out forwards; 
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    background-color: #4b69ff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+}
+
+.back-button:hover {
+    background-color: #3a57e0;
+}
+
+.planet-name {
+    font-size: 3em;
+    /* Warna biru Bumi */
+    color: #3b7b9e; 
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(59, 123, 158, 0.7);
+}
+
+.planet-image-wrapper {
+    width: 100%;
+    max-width: 400px; 
+    margin: 0 auto 25px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+
+.planet-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.planet-image:hover {
+    transform: scale(1.25); 
+}
+
+.image-caption {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 8px;
+    font-size: 0.9em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-weight: bold;
+}
+
+.planet-info h2 {
+    /* Warna aksen untuk heading */
+    color: #a0d8d8; 
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(160, 216, 216, 0.3);
+    padding-bottom: 5px;
+    font-weight: bold;
+}
+
+.planet-info p {
+    line-height: 1.8;
+    text-align: left;
+    margin-bottom: 20px;
+     font-weight: bold;
+}
+
+.planet-info ul {
+    text-align: left;
+    list-style-type: none; 
+    padding-left: 0;
+     font-weight: bold;
+}
+
+.planet-info ul li {
+    margin-bottom: 10px;
+    padding-left: 25px; 
+    position: relative;
+     font-weight: bold;
+}
+
+.planet-info ul li::before {
+    content: '🌍'; /* Bullet globe kustom */
+    position: absolute;
+    left: 0;
+    color: #3b7b9e;
+     font-weight: bold;
+}
+
+/* Responsif untuk layar lebih kecil */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        width: 95%;
+        margin-top: 20px;
+    }
+
+    .planet-name {
+        font-size: 2.5em;
+    }
+
+    .back-button {
+        position: static; 
+        margin-bottom: 20px;
+        display: block;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .planet-name {
+        font-size: 2em;
+    }
+
+    .planet-info h2 {
+        font-size: 1.5em;
+    }
+
+    .planet-info p, .planet-info ul li {
+        font-size: 0.9em;
+    }
+}

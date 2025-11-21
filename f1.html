@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Realm Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="f1.css">
+</head>
+<body>
+
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <div id="preloader">
+        <div class="atom-spinner">
+            <div class="electron"></div>
+            <div class="electron"></div>
+            <div class="electron"></div>
+        </div>
+        <p>INITIALIZING QUANTUM STATE...</p>
+    </div>
+
+    <canvas id="quantum-canvas"></canvas>
+
+    <main class="container">
+        
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="glitch" data-text="QUANTUM PHYSICS">QUANTUM PHYSICS</h1>
+                <p class="subtitle">Menembus Batas Realitas & Imajinasi</p>
+                <div class="scroll-indicator">
+                    <span></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="concepts">
+            <h2 class="section-title">Hukum <span class="text-gradient">Fundamental</span></h2>
+            
+            <div class="card-container">
+                <div class="tilt-card">
+                    <div class="card-content">
+                        <div class="icon-box">🌊</div>
+                        <h3>Dualitas</h3>
+                        <p>Cahaya adalah partikel sekaligus gelombang. Realitas tergantung bagaimana Anda mengukurnya.</p>
+                    </div>
+                </div>
+
+                <div class="tilt-card">
+                    <div class="card-content">
+                        <div class="icon-box">🕸️</div>
+                        <h3>Entanglement</h3>
+                        <p>Koneksi hantu jarak jauh. Perubahan pada satu partikel mengubah pasangannya seketika di ujung alam semesta.</p>
+                    </div>
+                </div>
+
+                <div class="tilt-card">
+                    <div class="card-content">
+                        <div class="icon-box">🌌</div>
+                        <h3>Superposisi</h3>
+                        <p>Objek bisa berada di semua kemungkinan keadaan sekaligus sampai ada pengamat yang melihatnya.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="lab-section">
+            <h2 class="section-title">Lab <span class="text-gradient">Schrödinger</span></h2>
+            <p class="lab-desc">Buka kotak untuk meruntuhkan fungsi gelombang.</p>
+            
+            <div class="experiment-box" id="schrodingerBox">
+                <div class="box-lid">
+                    <span class="status-text">?</span>
+                </div>
+                <div class="box-body">
+                    <div class="cat-result" id="catResult"></div>
+                </div>
+            </div>
+            
+            <button class="btn-neon" onclick="revealCat()">OBSERVASI</button>
+        </section>
+    </main>
+    <a href="sains4.html" class="back-button">
+                    ← Kembali ke Materi
+                </a>
+
+    <script src="f1.js"></script>
+</body>
+</html>

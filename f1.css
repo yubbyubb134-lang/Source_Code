@@ -1,0 +1,251 @@
+/* --- VARIABEL & RESET --- */
+:root {
+    --bg-dark: #030305;
+    --neon-cyan: #00f3ff;
+    --neon-pink: #bc13fe;
+    --neon-blue: #0066ff;
+    --glass: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --font-head: 'Orbitron', sans-serif;
+    --font-body: 'Rajdhani', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; cursor: none; /* Hide default cursor */ }
+
+body {
+    background-color: var(--bg-dark);
+    color: #fff;
+    font-family: var(--font-body);
+    overflow-x: hidden;
+}
+
+/* --- CUSTOM CURSOR --- */
+.cursor, .cursor-follower {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, opacity 0.3s;
+}
+
+.cursor {
+    width: 8px;
+    height: 8px;
+    background: var(--neon-cyan);
+    box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.cursor-follower {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.02);
+    transition: left 0.15s ease-out, top 0.15s ease-out, width 0.3s, height 0.3s;
+}
+
+/* Hover effect for cursor */
+body.hovering .cursor-follower {
+    width: 60px;
+    height: 60px;
+    border-color: var(--neon-pink);
+    background: rgba(188, 19, 254, 0.1);
+}
+
+/* --- PRELOADER --- */
+#preloader {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 0.8s ease;
+}
+
+.atom-spinner {
+    width: 100px; height: 100px;
+    position: relative;
+    perspective: 800px;
+}
+
+.electron {
+    position: absolute;
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: var(--neon-cyan);
+    border-bottom-color: var(--neon-pink);
+    animation: spin 1.5s linear infinite;
+}
+
+.electron:nth-child(1) { transform: rotateX(35deg) rotateY(-45deg); }
+.electron:nth-child(2) { transform: rotateX(50deg) rotateY(10deg); animation-delay: 0.2s; }
+.electron:nth-child(3) { transform: rotateX(-50deg) rotateY(60deg); animation-delay: 0.4s; }
+
+@keyframes spin {
+    0% { transform: rotateZ(0deg) rotateX(35deg) rotateY(-45deg); }
+    100% { transform: rotateZ(360deg) rotateX(35deg) rotateY(-45deg); }
+}
+
+/* --- BACKGROUND & LAYOUT --- */
+#quantum-canvas {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+}
+
+.container {
+    max-width: 1200px; margin: 0 auto; padding: 0 20px;
+}
+
+section {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    position: relative;
+}
+
+/* --- TYPOGRAPHY & HERO --- */
+.hero-content { text-align: center; z-index: 2; }
+
+.glitch {
+    font-family: var(--font-head);
+    font-size: 5rem;
+    font-weight: 900;
+    position: relative;
+    color: #fff;
+    letter-spacing: 5px;
+}
+
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+}
+
+.glitch::before {
+    left: 2px; text-shadow: -1px 0 var(--neon-pink);
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px; text-shadow: -1px 0 var(--neon-cyan);
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% { clip: rect(10px, 9999px, 30px, 0); }
+    20% { clip: rect(80px, 9999px, 100px, 0); }
+    100% { clip: rect(40px, 9999px, 60px, 0); }
+}
+
+.subtitle {
+    font-size: 1.5rem; letter-spacing: 3px;
+    color: rgba(255,255,255,0.7); margin-top: 20px;
+    text-transform: uppercase;
+}
+
+.text-gradient {
+    background: linear-gradient(to right, var(--neon-cyan), var(--neon-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- CARDS (3D TILT) --- */
+.card-container {
+    display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; width: 100%;
+}
+
+.tilt-card {
+    width: 300px; height: 400px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    transition: transform 0.1s; /* Smooth tilt handled by JS */
+}
+
+.card-content {
+    padding: 40px;
+    height: 100%;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+    transform: translateZ(30px); /* Pop out effect */
+}
+
+.icon-box { font-size: 4rem; margin-bottom: 20px; text-shadow: 0 0 20px rgba(255,255,255,0.2); }
+
+.tilt-card h3 { font-family: var(--font-head); margin-bottom: 15px; color: var(--neon-cyan); }
+.tilt-card p { line-height: 1.6; color: #ddd; }
+
+/* --- LAB SECTION --- */
+.experiment-box {
+    width: 200px; height: 200px;
+    background: rgba(0,0,0,0.5);
+    border: 2px solid var(--neon-pink);
+    border-radius: 10px;
+    margin: 40px 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(188, 19, 254, 0.2);
+    transition: 0.5s;
+}
+
+.status-text {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 3rem; font-family: var(--font-head);
+}
+
+.btn-neon {
+    padding: 15px 40px;
+    background: transparent;
+    color: var(--neon-cyan);
+    border: 2px solid var(--neon-cyan);
+    font-family: var(--font-head);
+    font-size: 1.2rem;
+    cursor: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+}
+
+.btn-neon:hover {
+    background: var(--neon-cyan);
+    color: #000;
+    box-shadow: 0 0 40px var(--neon-cyan);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .glitch { font-size: 2.5rem; }
+    .cursor, .cursor-follower { display: none; } /* Disable custom cursor on mobile */
+    * { cursor: auto; }
+}
+.back-button {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--relativistic-blue);
+    text-decoration: none;
+    margin-top: 40px;
+    padding: 10px 20px;
+    border: 1px solid var(--relativistic-blue);
+    display: inline-block;
+    letter-spacing: 2px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    z-index: 50; /* Pastikan di atas elemen lain */
+    cursor: pointer !important; /* Memperlihatkan kursor normal untuk tombol */
+}
+
+.back-button:hover {
+    background-color: var(--relativistic-blue);
+    color: var(--void-black);
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px var(--relativistic-blue);
+}

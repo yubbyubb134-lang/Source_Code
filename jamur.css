@@ -1,0 +1,239 @@
+/* Reset & Font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 🟢 PERUBAHAN 1: Ganti warna body agar mendukung gradasi */
+body {
+    font-family: 'Merriweather', serif;
+    background-color: #0d1a0d; /* Warna dasar hutan gelap untuk bagian bawah */
+    color: #333; /* Default text color (akan diubah lagi di content-container) */
+    overflow-x: hidden;
+    /* Tambahkan Gradasi Latar Belakang */
+    background: linear-gradient(to bottom, #98fb98 0%, #0d1a0d 100vh); /* Hijau terang (Mint Green) di atas, gelap di bawah */
+    background-attachment: fixed; /* Penting agar gradasi tetap di tempat */
+}
+
+#main-header {
+    text-align: center;
+    padding: 20px 20px 40px;
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border-bottom: 50px solid var(--glass-border);
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 50px;
+    z-index: 100;
+    /* mix-blend-mode: difference; JANGAN DIGUNAKAN dengan teks putih di latar hijau terang */
+    color: #333; /* Warna teks gelap */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 5px rgba(255,255,255,0.5); /* Ubah shadow agar kontras dengan latar terang */
+}
+
+.back-btn {
+    padding: 10px 20px;
+    border: 2px solid currentColor;
+    background: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    color: inherit;
+}
+
+.back-btn:hover {
+    background: currentColor;
+    color: #f5f5f5; /* Warna terang untuk hover */
+}
+
+.top-btn {
+    position: absolute;
+    left: 50px;
+    top: 15px;
+    padding: 8px 15px;
+}
+
+.back-footer {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 20vh;
+    background-color: transparent; /* Ubah agar gradasi latar belakang terlihat */
+    z-index: 20;
+}
+
+/* --- KONSEP UNIK: PARALLAX LAPISAN HUTAN --- */
+.parallax-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.1s linear, filter 0.5s ease-out;
+}
+
+/* Gambar untuk setiap lapisan */
+/* 🟢 PERUBAHAN 2: Kurangi brightness/kontras pada gambar agar menyatu dengan latar hijau terang */
+.layer-back {
+    background-image: url('https://images.unsplash.com/photo-1510784742466-419b671a5333?q=80&w=1000&auto=format&fit=crop');
+    z-index: -3;
+    filter: brightness(0.6) opacity(0.8); /* Kontras lebih rendah */
+}
+.layer-middle {
+    background-image: url('https://images.unsplash.com/photo-1469854497556-912f2c253d5f?q=80&w=1000&auto=format&fit=crop');
+    z-index: -2;
+    filter: brightness(0.7) opacity(0.9);
+}
+.layer-front {
+    background-image: url('https://images.unsplash.com/photo-1517448881335-e1106e23c72b?q=80&w=1000&auto=format&fit=crop');
+    z-index: -1;
+    filter: brightness(0.9) blur(0px);
+}
+
+/* --- Konten Teks (Fakta Jamur) --- */
+.content-container {
+    position: relative;
+    padding-top: 100vh;
+    padding-bottom: 100vh;
+    z-index: 1;
+    color: #333; /* Pastikan teks konten gelap */
+}
+
+.mushroom-fact {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    position: relative;
+}
+
+/* 🟢 PERUBAHAN 3: Ubah latar belakang kartu teks menjadi 'smoke' dan ubah bayangan */
+.text-card {
+    max-width: 900px;
+    text-align: center;
+    padding: 60px;
+    background: rgba(245, 245, 245, 0.95); /* Warna Smoke */
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); /* Bayangan sedikit lebih ringan */
+    backdrop-filter: blur(5px);
+    color: #333; /* Teks default di card */
+
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+    transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.mushroom-fact.active .text-card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* 🟢 PERUBAHAN 4: Ubah warna judul dan subtitle agar kontras dengan latar smoke */
+.text-card h1, .text-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.8rem;
+    margin-bottom: 15px;
+    color: #008000; /* Warna Hijau Hutan Tua */
+    text-shadow: none; /* Hilangkan glow */
+}
+
+.subtitle {
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.1rem;
+    color: #3cb371; /* Medium Sea Green */
+    margin-bottom: 25px;
+}
+
+.text-card p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #444; /* Teks paragraf lebih gelap */
+}
+
+.mushroom-icon {
+    font-size: 5rem;
+    margin-top: 30px;
+    color: #008000; /* Ubah warna icon */
+    text-shadow: 0 0 5px rgba(0, 128, 0, 0.5);
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.mushroom-img {
+    max-width: 60%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    /* Animasi mengambang */
+    animation: float-mushroom 5s ease-in-out infinite;
+}
+
+/* Animasi Icon/Gambar Jamur */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
+}
+
+@keyframes float-mushroom {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+
+/* Final Spacer */
+.final-spacer {
+    height: 100vh;
+    background-color: transparent; /* Ubah agar gradasi terlihat */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .text-card h1, .text-card h2 {
+        font-size: 2.5rem;
+    }
+    .top-btn {
+        left: 20px;
+    }
+    .logo {
+        font-size: 1.5rem;
+    }
+    .text-card {
+        padding: 30px;
+    }
+}

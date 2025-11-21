@@ -1,0 +1,597 @@
+/* Custom CSS Variables */
+:root {
+    --primary-color: #38761d; /* Hijau Tua */
+    --secondary-color: #6aa84f; /* Hijau Sedang */
+    --accent-color: #93c47d; /* Hijau Muda */
+    --bg-light: #f7f7f7;
+    --bg-dark: #e8e8e8;
+    --text-dark: #333;
+    --text-light: #fff;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Global Reset and Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ... (Gaya CSS sebelumnya) ... */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+
+    background-color: var(--primary-color); 
+    
+    scroll-behavior: smooth;
+    padding-top: 70px; 
+    transition: background-color 0.1s linear; 
+}
+.content-section {
+    padding: 80px 0;
+    min-height: 50vh;
+    background-color: transparent;
+}
+
+.bg-light {
+    
+    background-color: var(--bg-dark); 
+}
+
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- 1. Navbar --- */
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 15px 0;
+    z-index: 1000;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#navbar.scrolled {
+    background-color: rgba(56, 118, 29, 0.95); /* Sedikit transparan saat scroll */
+    box-shadow: var(--shadow);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-left: 20px;
+    color: var(--text-light);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin-right: 20px;
+}
+
+.nav-links li a {
+    color: var(--text-light);
+    padding: 10px 15px;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+}
+
+/* --- 2. Sections and Layout --- */
+.hero-section {
+    background: url('https://images.unsplash.com/photo-1542845831-27814b7261ec?fit=crop&w=1500&q=80') no-repeat center center/cover;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    text-align: center;
+    position: relative;
+}
+
+#blur-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    transition: opacity 0.5s ease;
+    z-index: 1;
+}
+
+.hero-content {
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--text-dark);
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background-color: #799a63;
+    transform: translateY(-2px);
+}
+
+.content-section {
+    padding: 80px 0;
+    min-height: 50vh;
+}
+
+.bg-light {
+    background-color: var(--bg-dark);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 50px;
+}
+
+/* Apa Itu Pohon Section */
+.explanation-grid {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.text-explanation {
+    flex: 2;
+}
+
+.image-diagram {
+    flex: 1;
+    text-align: center;
+}
+
+.image-diagram img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.caption {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.highlight-box {
+    background-color: #e6f7e6;
+    border-left: 5px solid var(--primary-color);
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 4px;
+    font-style: italic;
+}
+.highlight-box i {
+    margin-right: 10px;
+    color: var(--secondary-color);
+}
+
+/* Fakta Unik Section (Tabs) */
+.tab-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--text-light);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.tabs-nav {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 2px solid var(--bg-dark);
+}
+
+.tab-button {
+    flex-grow: 1;
+    background: none;
+    border: none;
+    padding: 15px 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative;
+}
+
+.tab-button:hover {
+    background-color: var(--bg-dark);
+}
+
+.tab-button.active {
+    color: var(--primary-color);
+}
+
+.tab-button.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.tabs-content {
+    padding: 30px;
+}
+
+.tab-pane {
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+/* Jenis Pohon Section (Cards) */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.tree-card {
+    background-color: var(--text-light);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+.tree-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.icon-large {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.tree-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.tree-tag {
+    background-color: var(--accent-color);
+    color: var(--text-dark);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 50px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.tree-tag:hover {
+    background-color: #6aa84f;
+    color: var(--text-light);
+}
+
+/* Footer */
+footer {
+    background-color: var(--text-dark);
+    color: var(--text-light);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+}
+
+/* Back to Home Button */
+/* ... (Gaya CSS sebelumnya) ... */
+
+/* Back to Home Button (Perubahan Posisi) */
+.btn-back-home {
+    position: fixed;
+    
+    top: 90px; /* Sedikit di bawah navbar */
+    left: 20px;
+    bottom: auto; /* Hilangkan posisi bawah */
+    right: auto; /* Hilangkan posisi kanan */
+    
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    padding: 8px 12px; /* Dikecilkan sedikit agar lebih rapi di atas */
+    border-radius: 5px;
+    z-index: 999;
+    font-weight: 600;
+    box-shadow: var(--shadow);
+    transition: background-color 0.3s;
+}
+
+.btn-back-home:hover {
+    background-color: var(--primary-color);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1002; /* Di bawah tombol X */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    animation: fadeInModal 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+
+/* Modal Content Box */
+.modal-content {
+    background-color: var(--bg-light);
+    margin: 5% auto; 
+    padding: 30px; 
+    border-radius: 12px;
+    width: 90%;
+    max-width: 900px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    position: relative;
+    animation: slideInTop 0.4s ease-out;
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+
+    /* Kontrol Tinggi Modal */
+    max-height: 90vh; 
+    overflow-y: auto; /* Scroll keseluruhan modal jika terlalu panjang */
+}
+
+/* Close Button (z-index tinggi agar bisa diklik) */
+.close-btn {
+    color: var(--text-dark);
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute; 
+    top: 15px;
+    right: 25px;
+    cursor: pointer;
+    transition: color 0.2s;
+    z-index: 1003; /* Lebih tinggi dari modal backdrop (1002) */
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #cc0000;
+    text-decoration: none;
+}
+
+/* Modal Title */
+#modal-title {
+    color: var(--primary-color);
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+}
+
+/* Modal Body Grid (Tata Letak Kiri-Kanan) */
+.modal-body-grid {
+    display: flex; 
+    gap: 20px; 
+    align-items: stretch; 
+    padding-top: 10px;
+}
+
+.modal-text-content {
+    flex: 1; /* Kolom Kiri */
+    display: flex;
+    flex-direction: column;
+    padding: 15px; 
+    
+    /* Area Teks yang Dapat Di-scroll */
+    max-height: 450px; /* Batas tinggi agar tidak mendorong kolom gambar */
+    overflow-y: auto; 
+
+    background-color: #e6f7e6;
+    border-radius: 8px;
+    border-left: 5px solid var(--primary-color);
+}
+
+#modal-fact {
+    font-size: 1rem;
+    color: var(--text-dark);
+    margin-top: 0; 
+}
+
+.modal-image-wrapper {
+    flex: 1; /* Kolom Kanan */
+    position: relative;
+    /* Trik Rasio 16:9 */
+    padding-bottom: 56.25%; /* (9 / 16) * 100% */
+    height: 0;
+    overflow: hidden;
+    margin-top: 10px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+#modal-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Memenuhi wadah 16:9 */
+    border-radius: 8px;
+}
+
+.modal-image-wrapper .caption {
+    /* Caption diposisikan di luar wadah 16:9 agar tidak mengganggu rasio */
+    position: static;
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: #666;
+    text-align: center;
+}
+
+
+/* --- 4. Animations (Keyframes) --- */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInTop {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Animasi Masuk dan Keluar Modal */
+@keyframes fadeInModal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOutModal {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes slideOutTop {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-50px); opacity: 0; }
+}
+
+/* Kelas untuk Animasi Keluar Modal */
+.modal.hide {
+    animation: fadeOutModal 0.3s forwards;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.modal.hide .modal-content {
+    animation: slideOutTop 0.4s ease-in forwards;
+}
+
+/* Scroll Reveal (JS interaction) */
+.reveal, .fade-in {
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal {
+    transform: translateY(20px);
+}
+
+.reveal.visible, .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+
+
+/* --- 5. Responsive Design --- */
+@media (max-width: 900px) {
+    .explanation-grid {
+        flex-direction: column;
+    }
+    .text-explanation, .image-diagram {
+        flex: none;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+    .logo {
+        font-size: 1.5rem;
+    }
+    .nav-links {
+        display: none; /* Sembunyikan Nav Links di Mobile Sederhana */
+    }
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Modal Responsive */
+    .modal-content {
+        margin: 10% auto; 
+        padding: 20px;
+        min-height: auto;
+    }
+    .modal-body-grid {
+        flex-direction: column; 
+    }
+    .modal-image-wrapper {
+        /* Kembalikan ke normal di mobile */
+        padding-bottom: 0;
+        height: auto;
+        margin-top: 0;
+    }
+    #modal-image {
+        position: static;
+        height: auto;
+        object-fit: contain;
+    }
+    .modal-text-content {
+        max-height: none; 
+        overflow-y: visible;
+    }
+}

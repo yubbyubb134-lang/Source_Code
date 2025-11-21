@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dunia Fakta Unik - Tambah Wawasanmu!</title>
+    <link rel="stylesheet" href="xcv.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <audio id="background-music" loop autoplay>
+        <source src="sound.mp3" type="audio/mpeg">
+    </audio>
+    <div id="splash-overlay">
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+        <div class="cloud cloud-4"></div>
+        <div class="cloud cloud-5"></div>
+        <div class="cloud cloud-6"></div>
+        <div class="half left-half"></div>
+        <div class="half right-half"></div>
+        <p class="loading-text">DuniaFakta. Loading...</p>
+    </div>
+        <nav class="navbar">
+
+        <div class="logo">🌍 EdForAll.</div>
+        <ul class="nav-links">
+            <li><a href="#">Beranda</a></li>
+            <li><a href="#kategori">Kategori</a></li>
+            <li><a href="tentang.html">Tentang</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+<div class="hero-content">
+            <div id="emoji-background"></div>
+            <h1>Tahukah Kamu?</h1>
+<p class="fact-display" id="fact-display">
+ Klik tombol di bawah untuk mendapatkan fakta unik acak!
+</p>
+<button id="generate-btn">Tampilkan Fakta Baru 🎲</button>
+</div>
+</header>
+
+    <section class="container" id="kategori">
+        <h2>Kategori</h2>
+        <div class="card-grid">
+            <div class="card" id="science-card-trigger">
+                <div class="icon">⚗️</div>
+                <h3>Sains</h3>
+                <p>Fakta Unik Mengenai Sains!</p>
+            </div>
+            <div class="card" id="animal-card-trigger">
+                <div class="icon">🐙</div>
+                <h3>Hewan</h3>
+                <p>Fakta Unik Mengenai Dunia Hewan!</p>
+            </div>
+            <div class="card" id="plant-card-trigger"> <div class="icon">🍀</div>
+                <h3>Tumbuhan</h3>
+                <p>Fakta Unik Mengenai Dunia Tumbuhan!</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="science-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn science-close">&times;</span>
+            <h3>🔬 Fakta Unik Sains Lebih Lanjut 🔬</h3>
+            <div class="modal-card-grid">
+                <div class="modal-card">
+                    <div class="modal-icon">🔭</div>
+                    <a href="sains1.html">Astronomi</a>
+                    <p>ilmu yang mempelajari benda-benda langit seperti bintang, planet, galaksi, dan komet serta fenomena yang terjadi di luar atmosfer Bumi.</p>
+
+                </div>
+                <div class="modal-card">
+                    <div class="modal-icon">🧬</div>
+                    <a href="sains2.html">Biologi</a>
+                    <p>Air panas membeku lebih cepat daripada air dingin (dikenal sebagai Efek Mpemba).</p>
+                </div>
+                <div class="modal-card">
+                    <div class="modal-icon">🦠</div>
+                    <a href="sains3.html">Kimia</a>
+                    <p>Otak manusia menghasilkan daya sekitar 12-25 watt—cukup untuk menyalakan lampu kecil.</p>
+                </div>
+                <div class="modal-card">
+                    <div class="modal-icon">🧲</div>
+                    <a href="sains4.html">Fisika</a>
+                    <p>Stegosaurus memiliki otak seukuran kenari, beratnya hanya 70-80 gram.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="animal-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn animal-close">&times;</span>
+            <h3>🐾 Fakta Unik Dunia Hewan Lebih Lanjut 🐅</h3>
+            <div class="modal-card-grid">
+                <div class="modal-card">
+                    <div class="modal-icon">🐘</div>
+                    <a href="mamalia.html">Mamalia</a>
+                    <p>Fakta unik mengenai mamalia yang mungkin jarang kalan ketahui!</p>
+                </div>
+                <div class="modal-card">
+                    <div class="modal-icon">🐠</div>
+                    <a href="air.html">Air</a>
+                    <p>Ayo kita menyelam kelautan dalam!</p>
+                </div>
+                <div class="modal-card">
+                    <div class="modal-icon">🦋</div>
+                    <a href="serangga.html">Serangga</a>
+                    <p>Apakah kalian sering berkhayal menjadi kecil? Ayo kita jelajahi dunia serangga!</p>
+                </div>
+                <div class="modal-card">
+                    <div class="modal-icon">🐍</div>
+                    <a href="reptil.html">Reptil</a>
+                    <p>Apakah kalian tahu kalau reptil juga memiliki fakta unik yang jarang diketahui? Ayo kita cari tahu bersama!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="plant-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn plant-close">&times;</span> <h3>🌿 Fakta Unik Dunia Tumbuhan 🌳</h3>
+            <div class="modal-card-grid">
+                <div class="modal-card">
+                    <div class="modal-icon">🌾</div>
+                    <a href="padi dan biji-bijian.html">Padi & Biji-bijian</a>
+                    <p>Bambu adalah tumbuhan dengan pertumbuhan tercepat di dunia, beberapa jenis bisa tumbuh 91 cm per hari.</p>
+                </div>
+                <div class="modal-card">
+                    <div class="modal-icon">🍄</div>
+                    <a href="jamur.html">Jamur</a>
+                    <p>Walaupun sering dikelompokkan dengan tumbuhan, jamur sebenarnya lebih dekat kekerabatannya dengan hewan.</p>
+                </div>
+                <div class="modal-card">
+                    <div class="modal-icon">🌸</div>
+                    <a href="bunga.html">Bunga</a>
+                    <p>Bunga tertinggi di dunia adalah Titan Arum (Bunga bangkai), tingginya bisa mencapai 3 meter.</p>
+                </div>
+                <div class="modal-card">
+                    <div class="modal-icon">🌲</div>
+                    <a href="pohon.html">Pohon</a>
+                    <p>Lebih dari 80.000 spesies tumbuhan dapat dimakan, tetapi hanya sekitar 20 yang menyediakan 90% makanan dunia.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy;  2025 EdForAll. All rights reserved.</p>
+    </footer>
+
+    <script src="xcv.js"></script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+/* --- VARIABLES & RESET --- */
+:root {
+    --void-black: #050505;
+    --accretion-gold: #ffae00;
+    --relativistic-blue: #00ccff;
+    --text-main: #e0e0e0;
+    --font-head: 'Space Mono', monospace;
+    --font-body: 'Exo 2', sans-serif;
+}
+
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    cursor: none; /* Hide default cursor */
+}
+
+body {
+    background-color: var(--void-black);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+}
+
+/* --- BACKGROUND & CANVAS --- */
+#void-canvas {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+}
+
+.vignette {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, transparent 40%, #000000 100%);
+    pointer-events: none; z-index: 0;
+}
+
+/* --- CUSTOM CURSOR (GRAVITY WELL) --- */
+#cursor, #cursor-blur {
+    position: fixed; border-radius: 50%; pointer-events: none;
+    transform: translate(-50%, -50%); z-index: 9999;
+}
+#cursor {
+    width: 10px; height: 10px; background: #fff;
+    mix-blend-mode: difference;
+}
+#cursor-blur {
+    width: 50px; height: 50px;
+    background: rgba(255, 174, 0, 0.15);
+    filter: blur(10px); transition: width 0.2s, height 0.2s;
+}
+body.hover-active #cursor-blur {
+    width: 100px; height: 100px; background: rgba(0, 204, 255, 0.2);
+}
+
+/* --- TYPOGRAPHY --- */
+h1, h2, h3 { font-family: var(--font-head); text-transform: uppercase; }
+.highlight { color: var(--accretion-gold); }
+
+nav {
+    position: absolute; top: 30px; left: 40px;
+    font-family: var(--font-head); letter-spacing: 4px; font-weight: bold;
+}
+
+/* --- HERO SECTION (THE VISUAL) --- */
+.hero {
+    height: 100vh; display: flex; align-items: center; justify-content: center;
+    position: relative; perspective: 1000px;
+}
+
+.black-hole-container {
+    position: absolute; width: 300px; height: 300px;
+    display: flex; justify-content: center; align-items: center;
+    transform: rotateX(70deg); /* Miringkan agar terlihat 3D seperti Interstellar */
+    z-index: 1;
+}
+
+/* Event Horizon (Hitam di tengah) */
+.event-horizon {
+    width: 150px; height: 150px;
+    background: #000; border-radius: 50%;
+    box-shadow: 0 0 50px #000, inset 0 0 20px rgba(255,255,255,0.5);
+    z-index: 10; position: absolute;
+}
+
+/* Accretion Disk (Cincin bercahaya) */
+.accretion-disk {
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent 0%, var(--accretion-gold) 20%, transparent 40%, var(--relativistic-blue) 60%, transparent 100%);
+    position: absolute;
+    animation: spinDisk 10s linear infinite;
+    filter: blur(8px);
+    opacity: 0.8;
+    box-shadow: 0 0 100px rgba(255, 174, 0, 0.2);
+}
+
+@keyframes spinDisk {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.hero-text {
+    z-index: 20; text-align: center; margin-top: 250px;
+    mix-blend-mode: overlay; /* Blend text with the glowing disk */
+}
+
+.hero-text h1 { font-size: 5rem; letter-spacing: 10px; margin-bottom: 10px; color: #fff; text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+.hero-text p { font-size: 1.2rem; color: rgba(255,255,255,0.7); }
+
+.scroll-down {
+    margin-top: 50px; font-size: 0.8rem; letter-spacing: 2px; opacity: 0.5;
+}
+
+/* --- ANATOMY CARDS --- */
+.anatomy {
+    padding: 100px 20px; min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center;
+}
+
+.section-header {
+    font-size: 3rem; margin-bottom: 60px; letter-spacing: 5px;
+    border-bottom: 1px solid var(--accretion-gold); padding-bottom: 20px;
+}
+
+.card-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px; max-width: 1200px; width: 100%;
+}
+
+.void-card {
+    background: rgba(20, 20, 20, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 40px; position: relative;
+    transition: transform 0.3s, background 0.3s;
+    overflow: hidden;
+}
+
+.void-card:hover {
+    background: rgba(30, 30, 30, 0.8);
+    transform: translateY(-10px);
+    border-color: var(--accretion-gold);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.card-number {
+    font-family: var(--font-head); font-size: 4rem; color: rgba(255,255,255,0.05);
+    position: absolute; top: 10px; right: 20px;
+}
+
+.void-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #fff; }
+.void-card p { line-height: 1.6; color: #aaa; font-size: 0.95rem; }
+
+.glow-bar {
+    width: 100%; height: 2px; background: var(--relativistic-blue);
+    position: absolute; bottom: 0; left: 0;
+    transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
+}
+.color-orange { background: var(--accretion-gold); }
+.color-white { background: #fff; }
+
+.void-card:hover .glow-bar { transform: scaleX(1); }
+
+/* --- SPAGHETTIFICATION SECTION --- */
+.spaghetti-section {
+    height: 80vh; display: flex; justify-content: center; align-items: center; text-align: center;
+    background: radial-gradient(circle at center, #111 0%, #000 70%);
+}
+.stretch-effect { display: inline-block; transform: scaleY(1.5); letter-spacing: 2px; color: var(--relativistic-blue); }
+
+.interactive-text {
+    font-family: var(--font-head); font-size: 5rem; font-weight: bold;
+    margin-top: 50px; cursor: crosshair;
+    transition: letter-spacing 0.1s;
+    text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+footer { text-align: center; padding: 40px; color: #444; font-family: var(--font-head); font-size: 0.8rem; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-text h1 { font-size: 3rem; }
+    .black-hole-container { width: 200px; height: 200px; }
+    .accretion-disk { width: 280px; height: 280px; }
+    .interactive-text { font-size: 2.5rem; }
+}
+
+.back-button {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--relativistic-blue);
+    text-decoration: none;
+    margin-top: 40px;
+    padding: 10px 20px;
+    border: 1px solid var(--relativistic-blue);
+    display: inline-block;
+    letter-spacing: 2px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    z-index: 50; /* Pastikan di atas elemen lain */
+    cursor: pointer !important; /* Memperlihatkan kursor normal untuk tombol */
+}
+
+.back-button:hover {
+    background-color: var(--relativistic-blue);
+    color: var(--void-black);
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px var(--relativistic-blue);
+}

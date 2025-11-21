@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reptile World | Fakta Unik</title>
+    <link rel="stylesheet" href="reptil.css">
+</head>
+<body>
+
+    <header class="hero">
+        <a href="xcv.html" class="btn-back">← Kembali</a>
+
+        <div class="hero-content">
+            <h1>Dunia Reptil</h1>
+            <p>Menjelajahi keajaiban makhluk berdarah dingin, dari yang terkecil hingga raksasa purba.</p>
+            <a href="#facts" class="btn-explore">Mulai Menjelajah</a>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section id="facts" class="section">
+            <h2 class="section-title">Ensiklopedia Reptil</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: #aaa;">(Klik kartu untuk melihat detail lengkap)</p>
+            
+            <div class="grid">
+                <article class="card scroll-trigger clickable" data-key="bunglon">
+                    <span class="card-icon">🦎</span>
+                    <h3>Bunglon</h3>
+                    <p>Bunglon mengubah warna bukan hanya untuk kamuflase, tapi lebih sering untuk komunikasi emosi.</p>
+                </article>
+
+                <article class="card scroll-trigger clickable" data-key="buaya">
+                    <span class="card-icon">🐊</span>
+                    <h3>Buaya</h3>
+                    <p>Buaya memiliki gigitan terkuat di bumi, tapi otot pembuka rahangnya sangat lemah.</p>
+                </article>
+
+                <article class="card scroll-trigger clickable" data-key="ular">
+                    <span class="card-icon">🐍</span>
+                    <h3>Ular</h3>
+                    <p>Ular mencium bau dengan lidah dan tidak memiliki kelopak mata untuk menutup mata.</p>
+                </article>
+
+                <article class="card scroll-trigger clickable" data-key="kura">
+                    <span class="card-icon">🐢</span>
+                    <h3>Kura-kura</h3>
+                    <p>Tempurung adalah bagian dari tulang rusuk. Beberapa spesies bisa bernapas lewat kloaka.</p>
+                </article>
+
+                <article class="card scroll-trigger clickable" data-key="gecko">
+                    <span class="card-icon">🦎</span>
+                    <h3>Gecko</h3>
+                    <p>Kaki tokek memiliki gaya elektromagnetik yang memungkinkan mereka menempel di kaca.</p>
+                </article>
+
+                <article class="card scroll-trigger clickable" data-key="komodo">
+                    <span class="card-icon">🐲</span>
+                    <h3>Komodo</h3>
+                    <p>Kadal terbesar di dunia. Air liur dan kelenjar bisanya sangat mematikan.</p>
+                </article>
+
+                <article class="card scroll-trigger clickable" data-key="basilisk">
+                    <span class="card-icon">🏃</span>
+                    <h3>Kadal Basilisk</h3>
+                    <p>Dijuluki "Jesus Christ Lizard" karena kemampuannya berlari di atas permukaan air.</p>
+                </article>
+
+                <article class="card scroll-trigger clickable" data-key="iguana">
+                    <span class="card-icon">👁️</span>
+                    <h3>Iguana</h3>
+                    <p>Iguana memiliki "mata ketiga" di atas kepalanya untuk mendeteksi cahaya dan bayangan.</p>
+                </article>
+
+                <article class="card scroll-trigger clickable" data-key="bertanduk">
+                    <span class="card-icon">🩸</span>
+                    <h3>Kadal Bertanduk</h3>
+                    <p>Dapat menyemprotkan darah segar langsung dari matanya untuk mengusir predator.</p>
+                </article>
+
+                <article class="card scroll-trigger clickable" data-key="tuatara">
+                    <span class="card-icon">🦖</span>
+                    <h3>Tuatara</h3>
+                    <p>Satu-satunya ordo Rhynchocephalia yang tersisa dari zaman dinosaurus. Fosil hidup sejati.</p>
+                </article>
+
+                <article class="card scroll-trigger clickable" data-key="thorny">
+                    <span class="card-icon">🌵</span>
+                    <h3>Thorny Devil</h3>
+                    <p>Kulit mereka memiliki saluran kapiler yang menyedot air dari pasir ke mulut.</p>
+                </article>
+
+                <article class="card scroll-trigger clickable" data-key="cobra">
+                    <span class="card-icon">👑</span>
+                    <h3>King Cobra</h3>
+                    <p>Ular berbisa terpanjang. Bisa menegakkan tubuh hingga setinggi mata manusia dewasa.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section scroll-trigger">
+            <div class="interactive-bg">
+                <h2>Generator Fakta Kilat</h2>
+                <p style="margin-bottom: 2rem; color: #888;">Klik tombol di bawah untuk mendapatkan wawasan baru!</p>
+                <div id="fact-display">"Reptil adalah hewan vertebrata pertama yang sepenuhnya beradaptasi untuk hidup di darat."</div>
+                <button class="btn-secondary" onclick="generateFact()">Fakta Baru 🎲</button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Edukasi Reptil Interaktif. Dibuat dengan ❤️ untuk Pecinta Hewan.</p>
+    </footer>
+
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div class="modal-header">
+                <span id="modal-icon" class="modal-icon-large">🦎</span>
+                <h2 id="modal-title">Judul Reptil</h2>
+            </div>
+            <div class="modal-body">
+                <p id="modal-desc">Deskripsi detail akan muncul di sini...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="reptil.js"></script>
+</body>
+</html>
